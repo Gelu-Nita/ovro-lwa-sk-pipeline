@@ -1,154 +1,188 @@
 # OVRO–LWA SK Pipeline
-
-**Status:** Personal development repository (bottom–up model)  
 **Author:** Gelu M. Nita  
 **Last updated:** 2025-11-16
 
-This repository contains a *bottom–up* development of an end–to–end
-Spectral Kurtosis (SK) analysis pipeline for **OVRO–LWA** solar data.
-It is designed as an application–level companion to the
-[`pyGSK` – Generalized Spectral Kurtosis Toolkit](https://github.com/suncast-org/pyGSK),
-showing how to use `pyGSK` on real telescope data in a
-reproducible, fully documented workflow.
+This repository contains a *bottom–up* development of an end–to–end  
+Spectral Kurtosis (SK) analysis pipeline for **OVRO–LWA** solar data.  
+It is designed as an application–level companion to  
+[`pyGSK` – Generalized Spectral Kurtosis Toolkit](https://github.com/suncast-org/pyGSK),  
+demonstrating how to apply `pyGSK` to real telescope data in a reproducible,  
+fully documented workflow.
 
-The primary goals are:
+The goals of this repository are:
 
-- Provide a concrete **OVRO–LWA SK pipeline** that can be cloned and run
-  by interested users.
-- Demonstrate **good open–science practices** (version control,
-  documentation, configuration files, and reproducible runs).
-- Serve as a **bottom–up model** that can later be transferred or
-  adapted for inclusion under the SUNCAST organization.
+- Provide a concrete **OVRO–LWA SK analysis pipeline** that users can clone and run.
+- Showcase **open-science best practices**, including configuration-driven workflows,
+  version control organization, and reproducibility.
+- Serve as a **bottom-up model** for future adoption within the  
+  **SUNCAST GitHub organization**.
 
-This repository is **not** intended for PyPI distribution.
-Instead, users clone it directly and install dependencies such as `pyGSK`
-in their own Python environment.
+This repository is **not** intended for PyPI distribution.  
+Users clone it directly and install dependencies manually.
 
 ---
 
-## Repository Layout
+## Repository Contents
 
-```text
+```
 ovro-lwa-sk-pipeline/
-├── README.md
-├── LICENSE
-├── CODE_OF_CONDUCT.md
-├── MAINTENANCE.md
-├── CONTRIBUTING.md
 ├── .gitignore
-├── scripts/
-│   └── run_ovro_lwa_sk_pipeline.py        # main driver script (to be developed)
-├── notebooks/
-│   └── ovro_lwa_sk_demo.ipynb             # exploratory / demo notebooks
-├── data/
-│   └── README.md                          # notes on expected data formats (no data tracked)
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── MAINTENANCE.md
+├── README.md
+│
 ├── configs/
-│   └── ovro_lwa_example.yaml              # example configuration file (to be developed)
+│   └── ovro_lwa_example.yaml                # Example configuration file (work in progress)
+│
+├── data/
+│   ├── README.md                            # Documentation of the dataset structure
+│   └── demo/
+│       └── ovro_lwa_demo.h5                 # 13.5 MB example OVRO–LWA dataset (tracked)
+│
 ├── docs/
-│   └── pipeline_overview.md               # extended documentation (to be developed)
-└── figures/
-    └── .gitkeep                           # placeholder for generated plots
+│   ├── ovro_lwa_readme.md                   # Detailed OVRO–LWA example documentation
+│   └── pipeline_overview.md                 # High-level description of the pipeline
+│
+├── figures/
+│   ├── .gitkeep                             # Keep directory in Git
+│   ├── 060963_182827094797b4e9492_XX_t10000-15000_M64_N24_d1.0_stage1_hist.png
+│   └── 060963_182827094797b4e9492_XX_t10000-15000_M8_N1536_d1.0_stage2_hist.png
+│
+├── notebooks/
+│   ├── ovro_lwa_single_file_pipeline_demo.ipynb
+│   └── ovro_lwa_two_stage_sk_example.ipynb
+│
+└── scripts/
+    ├── inspect_h5.py
+    ├── make_ovro_lwa_segment.py
+    ├── ovro-lwa.py
+    ├── ovro_lwa_batch_pipeline.py
+    ├── ovro_lwa_batch_quicklook.py
+    ├── ovro_lwa_batch_rfi_clean.py
+    ├── ovro_lwa_batch_stream.py
+    ├── ovro_lwa_batch_twostage.py
+    ├── ovro_lwa_rfi_clean.py
+    ├── ovro_lwa_sk_quicklook.py
+    ├── ovro_lwa_sk_stream.py
+    └── run_ovro_lwa_sk_pipeline.py          # High-level driver script (placeholder)
 ```
 
-At this stage, most files are **skeletons/placeholders** to define the
-intended structure. They can be refined as the pipeline matures.
+---
+
+## Demo Dataset
+
+A small OVRO–LWA dataset is included to allow running the notebooks and scripts  
+immediately, without needing separate downloads.
+
+**File:**  
+```
+data/demo/ovro_lwa_demo.h5
+```
+
+**Details:**
+
+- Size: ~13.5 MB  
+- Format: OVRO–LWA HDF5 (standard telescope structure)  
+- Contains: A short time–frequency segment suitable for  
+  SK thresholding, two-stage SK analysis, RFI classification,  
+  and quicklook development.
+
+Only this single demo file is tracked.  
+All other data files placed under the `data` directory are ignored by default:
+
+```gitignore
+data/**/*.h5
+!data/demo/ovro_lwa_demo.h5
+```
+
+Users are encouraged to place their own OVRO–LWA files under `data/`,  
+where they will remain untracked by Git.
 
 ---
 
-## Dependencies
+## Notebooks
 
-The exact dependency list will evolve, but the core assumptions are:
+Two demonstration notebooks are provided:
 
-- Python ≥ 3.9
-- [`pyGSK`](https://github.com/suncast-org/pyGSK) (installed from PyPI or GitHub)
-- `numpy`, `scipy`
-- `matplotlib`
-- `astropy` (for time handling, units, etc.)
-- `h5py` or similar I/O package (depending on OVRO–LWA data format)
-- `yaml` (`pyyaml`) for configuration files
+### `ovro_lwa_single_file_pipeline_demo.ipynb`
+- SK analysis on a single HDF5 file  
+- Quicklook visualizations  
+- RFI classification workflow
 
-Once the pipeline stabilizes, these will be consolidated into a
-`requirements.txt` or `environment.yml` file.
+### `ovro_lwa_two_stage_sk_example.ipynb`
+- Two–stage SK estimation workflow  
+- M,N parameter sweep → refined SK thresholds  
+- Comparison plots and diagnostic visualizations
+
+---
+
+## Scripts
+
+The `scripts` directory contains standalone tools and batch pipelines for:
+
+- inspecting OVRO–LWA HDF5 files  
+- extracting shorter time–frequency segments  
+- computing SK for single or multiple files  
+- generating SK quicklooks  
+- batch processing pipelines  
+- two–stage SK analysis  
+- experimental streaming/real-time pipelines
+
+These scripts were originally prototyped in a `pyGSK` fork and are now  
+maintained independently in this repository.
 
 ---
 
 ## Installation
 
-1. **Clone this repository** (from your personal GitHub account):
+```bash
+git clone https://github.com/<your-username>/ovro-lwa-sk-pipeline.git
+cd ovro-lwa-sk-pipeline
+```
 
-   ```bash
-   git clone https://github.com/<your-username>/ovro-lwa-sk-pipeline.git
-   cd ovro-lwa-sk-pipeline
-   ```
+Create environment:
 
-2. **Create and activate a Python environment** (example using `conda`):
+```bash
+conda create -n ovro-lwa-sk python=3.11
+conda activate ovro-lwa-sk
+```
 
-   ```bash
-   conda create -n ovro-lwa-sk python=3.11
-   conda activate ovro-lwa-sk
-   ```
+Install dependencies:
 
-3. **Install `pyGSK` and other dependencies**:
-
-   ```bash
-   pip install pygsk numpy scipy matplotlib astropy h5py pyyaml
-   ```
-
-   (Adjust this list as we refine the pipeline.)
+```bash
+pip install pygsk numpy scipy matplotlib astropy h5py pyyaml
+```
 
 ---
 
-## Usage (planned)
+## Usage
 
-A typical run is envisioned as:
+**Example high-level workflow (planned):**
 
 ```bash
-python scripts/run_ovro_lwa_sk_pipeline.py \\
-    /path/to/ovro_lwa/data \\
-    --config configs/ovro_lwa_example.yaml \\
-    --output-dir ./figures \\
-    --save-intermediate
+python scripts/run_ovro_lwa_sk_pipeline.py     /path/to/ovro_lwa/data     --config configs/ovro_lwa_example.yaml     --output-dir ./figures     --save-intermediate
 ```
 
-The driver script will:
+The demo dataset can be used to test the notebooks and scripts immediately, e.g.:
 
-1. Load configuration options (data selection, SK parameters, thresholds).
-2. Prepare the data in a form suitable for `pyGSK` (time–frequency arrays,
-   integration parameters, etc.).
-3. Call `pyGSK` routines to compute SK, apply thresholds, and flag RFI.
-4. Produce summary plots and simple text/CSV reports.
-
-At the moment, the script is a placeholder and will be developed iteratively.
+```bash
+python scripts/ovro_lwa_sk_quicklook.py data/demo/ovro_lwa_demo.h5
+```
 
 ---
 
 ## Relationship to `pyGSK` and SUNCAST
 
-- This repository **depends** on `pyGSK` but does not modify it.
-- It serves as a **bottom–up, real–data application** that complements the
-  top–down design of `pyGSK` examples.
-- The intent is that, once matured, selected parts (scripts, configs,
-  documentation) can be proposed for inclusion under the
-  **SUNCAST GitHub organization**, e.g., within a dedicated
-  `examples/ovro-lwa/` tree in `pyGSK` or a related SUNCAST workflow repo.
-
----
-
-## Contributing and Maintenance
-
-Since this is a personal development repo, contributions are initially
-limited and curated. As the project evolves, we may:
-
-- Open issues for feature requests and bug reports.
-- Accept pull requests following the guidelines in `CONTRIBUTING.md`.
-- Define a clearer maintainer model in `MAINTENANCE.md`.
-
-Please also see `CODE_OF_CONDUCT.md` for expectations regarding respectful,
-inclusive collaboration.
+- This repository **depends on `pyGSK`** for SK calculations and thresholding.  
+- It serves as a real-data, application-level example complementing  
+  the top-down design of `pyGSK`.  
+- Stable components may later be migrated to the  
+  **SUNCAST GitHub organization**.
 
 ---
 
 ## License
 
-This repository is released under the **BSD 3-Clause License** (see `LICENSE`).
-
+Released under the **BSD 3-Clause License**.
