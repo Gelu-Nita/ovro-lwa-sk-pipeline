@@ -56,3 +56,6 @@ figures/**/*.pdf
 !figures/060963_182827094797b4e9492_XX_t10000-15000_M64_N24_d1.0_stage1_hist.png
 !figures/060963_182827094797b4e9492_XX_t10000-15000_M8_N1536_d1.0_stage2_hist.png
 
+# --- allow the official demo file ---
+!data/demo/
+!data/demo/ovro_lwa_demo.h5
