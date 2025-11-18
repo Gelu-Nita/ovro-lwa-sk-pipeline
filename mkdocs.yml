@@ -1,0 +1,29 @@
+site_name: OVRO–LWA SK Pipeline
+site_description: End-to-end real-data pipeline for OVRO–LWA Spectral Kurtosis analysis.
+site_url: https://gelu-nita.github.io/ovro-lwa-sk-pipeline/
+
+repo_url: https://github.com/Gelu-Nita/ovro-lwa-sk-pipeline
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.instant
+    - navigation.top
+    - toc.follow
+    - content.code.copy
+    - search.highlight
+
+nav:
+  - Overview: pipeline_overview.md
+  - Two-Stage SK Example: ovro_lwa_readme.md
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - def_list
+  - tables
+  - attr_list
+  - fenced_code
