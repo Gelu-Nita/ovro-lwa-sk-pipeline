@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # OVRO–LWA Spectral Kurtosis (SK) Pipeline
 
 A research-grade, end-to-end Spectral Kurtosis (SK) analysis workflow for  
