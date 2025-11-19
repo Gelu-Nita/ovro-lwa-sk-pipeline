@@ -63,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#ovrolwa-spectral-kurtosis-sk-pipeline" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -95,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              OVRO–LWA Spectral Kurtosis (SK) Pipeline
             
           </span>
         </div>
@@ -279,6 +284,110 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-pipeline-provides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 What This Pipeline Provides
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📄 Documentation Sections
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📄 Documentation Sections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pipeline-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Pipeline Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-stage-sk-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Two-Stage SK Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repository-highlights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 Repository Highlights
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedback-contributions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📫 Feedback &amp; Contributions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 External Links
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -298,13 +407,62 @@
   
 
 
-  <h1>Home</h1>
-
-<p># OVRO–LWA Spectral Kurtosis (SK) Pipeline</p>
-<p>Welcome to the OVRO–LWA SK Pipeline documentation.</p>
-<p>Use the navigation bar at the top, or jump directly to:</p>
-<p>- [Overview](pipeline_overview.md)</p>
-<p>- [Two-Stage SK Example](ovro_lwa_readme.md)</p>
+<h1 id="ovrolwa-spectral-kurtosis-sk-pipeline">OVRO–LWA Spectral Kurtosis (SK) Pipeline<a class="headerlink" href="#ovrolwa-spectral-kurtosis-sk-pipeline" title="Permanent link">&para;</a></h1>
+<p>A research-grade, end-to-end Spectral Kurtosis (SK) analysis workflow for<br />
+<strong>OVRO–LWA total-power data</strong>, built on top of the<br />
+<a href="https://github.com/suncast-org/pyGSK"><code>pyGSK</code></a> toolkit.</p>
+<p>This documentation provides:</p>
+<ul>
+<li>A high-level overview of the SK pipeline design</li>
+<li>A fully reproducible two-stage SK example using real OVRO–LWA data</li>
+<li>Links to scripts, notebooks, and configuration files included in the repository</li>
+</ul>
+<hr />
+<h2 id="what-this-pipeline-provides">🚀 What This Pipeline Provides<a class="headerlink" href="#what-this-pipeline-provides" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Single-file SK analysis</strong> (<code>ovro-lwa.py</code>)  </li>
+<li><strong>Two-stage SK processing</strong> based on the generalized SK estimator  </li>
+<li><strong>Batch-mode pipelines</strong> for large OVRO–LWA datasets  </li>
+<li><strong>Quicklook visualization tools</strong> for dynamic spectra and SK histograms  </li>
+<li><strong>A demo HDF5 dataset</strong> included directly in the repository for testing</li>
+</ul>
+<p>The pipeline is intended as a <em>bottom-up development model</em> that will
+ultimately integrate into broader open-science workflows under the
+<strong>SUNCAST</strong> initiative.</p>
+<hr />
+<h2 id="documentation-sections">📄 Documentation Sections<a class="headerlink" href="#documentation-sections" title="Permanent link">&para;</a></h2>
+<h3 id="pipeline-overview">🔹 <a href="pipeline_overview/">Pipeline Overview</a><a class="headerlink" href="#pipeline-overview" title="Permanent link">&para;</a></h3>
+<p>Conceptual description of the workflow, SK methodology, data flow, and architecture.</p>
+<h3 id="two-stage-sk-example">🔹 <a href="ovro_lwa_readme/">Two-Stage SK Example</a><a class="headerlink" href="#two-stage-sk-example" title="Permanent link">&para;</a></h3>
+<p>Detailed, real-data worked example with scripts and notebook versions.</p>
+<hr />
+<h2 id="repository-highlights">📦 Repository Highlights<a class="headerlink" href="#repository-highlights" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Scripts:</strong> full command-line tools for SK streaming, renormalization, cleaning, and plotting  </li>
+<li><strong>Notebooks:</strong> demonstration workflows suitable for exploration and teaching  </li>
+<li><strong>Configs:</strong> ready-to-modify YAML templates  </li>
+<li><strong>Data:</strong> a built-in OVRO–LWA demo HDF5 file for immediate testing  </li>
+<li><strong>Figures:</strong> example output plots  </li>
+</ul>
+<hr />
+<h2 id="requirements">🔧 Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Python ≥ 3.9  </li>
+<li><code>pyGSK</code> ≥ 2.1.0  </li>
+<li><code>numpy</code>, <code>matplotlib</code>, <code>h5py</code>, <code>yaml</code>  </li>
+<li>(optional) JupyterLab  </li>
+</ul>
+<p>Full details are provided in the main repository <code>README.md</code>.</p>
+<hr />
+<h2 id="feedback-contributions">📫 Feedback &amp; Contributions<a class="headerlink" href="#feedback-contributions" title="Permanent link">&para;</a></h2>
+<p>This repository is under active development.<br />
+Issues and suggestions are welcome through the GitHub issue tracker.</p>
+<hr />
+<h2 id="external-links">🔗 External Links<a class="headerlink" href="#external-links" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>pyGSK Toolkit:</strong> https://github.com/suncast-org/pyGSK  </li>
+<li><strong>OVRO–LWA Observatory:</strong> https://www.ovro.caltech.edu/lwa  </li>
+</ul>
 
 
 
