@@ -1,29 +1,33 @@
 # OVRO–LWA Spectral Kurtosis (SK) Pipeline
 
+[![Docs](https://img.shields.io/badge/docs-online-blue?style=flat-square)](https://gelu-nita.github.io/ovro-lwa-sk-pipeline/)
+
+📘 **Full documentation:**  
+https://gelu-nita.github.io/ovro-lwa-sk-pipeline/
+
 **Author:** Gelu M. Nita  
 **Last updated:** 2025-11-18
 
 This repository provides a fully reproducible, bottom–up implementation of an
 end-to-end **Spectral Kurtosis (SK)** pipeline for **OVRO–LWA** total-power HDF5 data.
-It functions as an application-level companion to:
+It serves as an application-level companion to:
 
 👉 **pyGSK – Generalized Spectral Kurtosis Toolkit**  
 https://github.com/suncast-org/pyGSK
 
-The goal of this repository is to demonstrate how to apply `pyGSK` to real
-OVRO–LWA data using a documented, transparent scientific workflow.
+The goal is to demonstrate how to apply `pyGSK` to real OVRO–LWA data using a
+transparent, documented scientific workflow.
 
 ---
 
-# 📘 **Full Documentation**
+# 📘 Documentation
 
-The complete documentation (overview, examples, figures, installation notes)
-is available online via GitHub Pages:
+Full documentation and examples are available at:
 
 👉 **https://gelu-nita.github.io/ovro-lwa-sk-pipeline/**
 
 This site is automatically generated from the `docs/` folder using **MkDocs
-(Material theme)** and is kept up to date with every `main` branch push.
+(Material theme)**.
 
 ---
 
@@ -95,26 +99,25 @@ Run a quicklook SK plot on the included demo file:
 python scripts/ovro_lwa_sk_quicklook.py data/demo/ovro_lwa_demo.h5
 ```
 
-Equivalent if you added the scripts/ folder to PATH:
+If the scripts folder is added to PATH:
 
 ```
 ovro_lwa_sk_quicklook.py data/demo/ovro_lwa_demo.h5
 ```
 
-More examples (two-stage SK, batch processing, plotting conventions) are in:
+More detailed workflows (two-stage SK, batch pipelines) are documented here:
 
-👉 `docs/ovro_lwa_readme.md`  
-👉 `notebooks/ovro_lwa_two_stage_sk_example.ipynb`
+- `docs/ovro_lwa_readme.md`
+- `notebooks/ovro_lwa_two_stage_sk_example.ipynb`
 
 ---
 
 # 🎓 Relationship to pyGSK and SUNCAST
 
 - All SK calculations rely on `pyGSK`.
-- This repository focuses on **OVRO–LWA–specific pipelines**.
-- It is designed as a **prototype** that may later be transferred to  
-  the **SUNCAST organization**.
-- A Zenodo DOI will be created after migration.
+- This repository focuses on **OVRO–LWA–specific pipelines and workflow glue**.
+- It is designed as a **prototype** for eventual migration under SUNCAST.
+- A Zenodo DOI will be created once the repository is transferred.
 
 ---
 
